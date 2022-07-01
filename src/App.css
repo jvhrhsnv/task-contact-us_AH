@@ -1,0 +1,73 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: rgba(0, 110, 255, 0.952);
+    font-family: sans-serif;
+}
+.container {
+    width: 400px;
+    background-color: #FFF;
+    margin: 0 auto;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.header {
+    width: 100%;
+    background-color: black;
+    color: #FFF;
+    text-align: center;
+    font-size: 20px;
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+}
+
+main {
+    padding: 20px;
+}
+
+main label {
+    margin-right: 10px;
+}
+
+main .email {
+    background: none;
+    font-size: 16px;
+    padding: 5px 10px;
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: none;
+    color: #000;
+}
+
+#checked {
+    margin-right: 5px;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 70px;
+    height: 30px;
+    margin: 0 auto;
+    margin-top: 10px;
+    background: greenyellow;
+    transition: 0.3s;
+    border: none;
+    border-radius: 5px;
+    color: #000;
+}
+button:hover {
+    background-color: rgb(110, 169, 21);
+    transition: 0.3s;
+    color: #FFF;
+}
+button:focus {
+    transition: 0.3s;
+    background-color: rgb(31, 154, 31);
+    color: #FFF;
+}
