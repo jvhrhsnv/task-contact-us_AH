@@ -3,31 +3,47 @@ import "./App.css";
 class App extends Component {
   state = {
     email: "",
-    checked: false,
+    isAgree: false,
   };
 
-  handleValue = (event) => {
+  handleEmail = (event) => {
     this.setState({
       email: event.target.value,
     });
   };
 
-  handleChecked = (event) => {
+  handleIsAgree = (event) => {
     this.setState({
-        checked: event.target.checked
+        isAgree: event.target.checked
     })
   }
 
-  validateInfo = (event) => {
-    if (this.state.email !== "" && this.state.checked !== false) {
-      alert("Well done 😎");
+  submitBtn = () => {
+    const regEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    
+    const isValidEmail = regEmail.test(this.state.email);
+
+    const isValidIsAgree = this.state.isAgree;
+
+    if (!isValidEmail) {
+      alert("PLease, enter valid email!");
+      return;
     }
-    else {
-        alert("Error 😒")
+
+    if (!isValidIsAgree) {
+      alert("Please, agree with terms");
+      return;
     }
+
+    this.setState({
+      email: "",
+      isAgree: false
+    })
+
+    alert("Congratulations!!!")
   };
   render() {
-    const { email, checked } = this.state;
+    const { email, isAgree } = this.state;
     return (
       <div className="app">
         <div className="container">
@@ -38,20 +54,21 @@ class App extends Component {
               type="email"
               className="email"
               name="email"
+              id="email"
               value={email}
-              onChange={this.handleValue}
+              onChange={this.handleEmail}
             />
             <br />
             <input
               type="checkbox"
-              name="checked"
-              id="checked"
-              value={checked}
-              onChange={this.handleChecked}
+              name="agreement"
+              id="agreement"
+              checked={isAgree}
+              onChange={this.handleIsAgree}
             />
-            <label htmlFor="checked">Terms & Conditions</label>
+            <label htmlFor="agreement">Terms & Conditions</label>
             <br />
-            <button className="btn-submit" onClick={this.validateInfo} >
+            <button className="btn-submit" onClick={this.submitBtn} >
               Submit
             </button>
           </main>
